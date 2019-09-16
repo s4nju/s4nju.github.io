@@ -1,0 +1,115 @@
+@font-face {
+  font-family: roboto;
+  src: url(NeoLatina-gnx5.ttf);
+}
+a{
+  font-size: 4vh;
+  color: orange;
+  text-decoration: underline;
+  text-decoration-color: #fd9644;
+}
+
+a:hover {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23ff9800' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+  background-position: 0 100%;
+  background-size: auto 6px;
+  background-repeat: repeat-x;
+  text-decoration: none;
+}
+
+body{
+  font-family: roboto;
+  margin: 0;
+  background: url(gray_sand.png);
+}
+
+.container{
+  margin: 5% 10%;
+  background: url(axiom_transparent.png);
+  height: 80vh;
+  position: relative;
+  box-shadow: 10px 10px 30px;
+}
+
+.menu{
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  background: ;
+}
+
+.menu ul{
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.menu ul li{
+  font-size: 25px;
+}
+
+.menu span{
+  font-size: 30px;
+  padding: 10px;
+  padding-top: 12px;
+  padding-left: 30px;
+  background: ;
+}
+.cong{
+  height: 300px;
+  background: ;
+}
+
+.content{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.det{
+  background: ;
+  height: 73.6vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-flow: column wrap;
+  padding-left: 50px;
+}
+
+.content img{
+  height: 65vh;
+  position: absolute;
+  right: 0;
+  bottom: 7%;
+}
+
+.det button{
+  background:#ff6b6b ;
+  border: #ff6b6b;
+  width: 200px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.na1{
+  color: #ff7675;
+  margin: 0;
+  font-size: 40px;
+}
+
+.na2{
+  margin: 0;
+  color: #6c5ce7;
+  font-size: 50px;
+}
+
+.na3{
+  font-size: 20px;
+  color: #a5b1c2;
+}
+
+.setit{
+  position: absolute;
+  bottom: 0;
+  left: 35px;
+  z-index: 1;
+  height: 50vh;
+}
