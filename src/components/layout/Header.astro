@@ -4,17 +4,21 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
 import { menuLinks } from "@/site.config";
 ---
 
-<header class="group relative mb-16 max-md:mb-10 flex items-center" id="main-header">
+<header class="group relative mb-16 flex items-center max-md:mb-10" id="main-header">
 	<div class="flex sm:flex-col">
 		<a
 			aria-current={Astro.url.pathname === "/" ? "page" : false}
 			class="flex items-center"
 			href="/"
 		>
-			<img src="/profile.png" alt="Sanjib Sah" class="h-24 w-24 rounded-full max-md:h-16 max-md:w-16" />
+			<img
+				src="/profile.png"
+				alt="Sanjib Sah"
+				class="h-24 w-24 rounded-full max-md:h-16 max-md:w-16"
+			/>
 			<span class="text-xl font-bold sm:text-2xl">Sanjib Sah</span>
 		</a>
-		<nav
+		<!-- <nav
 			aria-label="Main menu"
 			class="absolute -inset-x-4 top-14 hidden flex-col items-end gap-y-4 rounded-md bg-bgColor/[.85] py-4 text-accent shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:-ms-4 sm:mt-1 sm:flex sm:flex-row sm:items-center sm:divide-x sm:divide-accent sm:rounded-none sm:bg-transparent sm:py-0 sm:shadow-none sm:backdrop-blur-none"
 			id="navigation-menu"
@@ -31,9 +35,9 @@ import { menuLinks } from "@/site.config";
 					</a>
 				))
 			}
-		</nav>
+		</nav> -->
 	</div>
-	<Search />
+	<!-- <Search /> -->
 	<ThemeToggle />
 	<!-- <mobile-button>
 		<button
