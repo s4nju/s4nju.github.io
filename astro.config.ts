@@ -21,6 +21,7 @@ import rehypeUnwrapImages from "rehype-unwrap-images";
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://s4nju.github.io/',
 	image: {
 		domains: ["webmention.io"],
 	},
@@ -95,8 +96,6 @@ export default defineConfig({
 	},
 	// https://docs.astro.build/en/guides/prefetch/
 	prefetch: true,
-	// ! Please remember to replace the following site property with your own domain
-	site: "https://astro-cactus.chriswilliams.dev/",
 	vite: {
 		optimizeDeps: {
 			exclude: ["@resvg/resvg-js"],

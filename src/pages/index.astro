@@ -39,7 +39,7 @@ const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 			<br />
 			<br />
 			<span
-				class="animate-shimmer focus:ring-offset-2 focus:ring-offset-slate-50 inline-flex h-12 items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 max-md:h-20"
+				class="focus:ring-offset-2 focus:ring-offset-slate-50 inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 max-md:h-20"
 				>Currently, I'm looking for challenging opportunities! 🔎</span
 			>
 			<br />
@@ -72,21 +72,57 @@ const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 	<section aria-label="Blog post list" class="mt-16">
 		<h2 class="title mb-2 text-xl text-accent">Work Experience</h2>
 		<ul class="space-y-6" role="list">
-			<li class="grid gap-2 sm:grid-cols-[auto_1fr]">
+			{
+				[
+					{
+						designation: "Senior Frontend Engineer",
+						company: "Neoble",
+						duration: "Sep 2023 - Nov 2024",
+						url: "https://neoble.in/",
+						icon: "/neoble.png",
+					},
+					{
+						designation: "Senior Frontend Engineer",
+						company: "Tekion Corp",
+						duration: "Mar 2022 - Aug 2023",
+						url: "https://tekion.com/",
+						icon: "/tekion.png",
+					},
+					{
+						designation: "Frontend Engineer",
+						company: "indiagold",
+						duration: "Aug 2019 - Feb 2022",
+						url: "https://indiagold.co/",
+						icon: "/indiagold.png",
+					},
+				].map((item) => (
+					<li class="grid gap-2 sm:grid-cols-[auto_1fr]">
+						<h3 class="text-lg font-semibold text-accent-2">
+							<span class="text-md text-slate-400">{item.designation}</span>
+							<a
+								href="https://neoble.in/"
+								target="_blank"
+								rel="noreferrer"
+								class="flex items-center gap-2"
+							>
+								{item.company} <img src={item.icon} alt="indiagold" class="h-6 w-6" />
+							</a>
+						</h3>
+						<p class="text-sm text-textColor">
+							<span class="text-green-500">{item.duration}</span>
+						</p>
+					</li>
+				))
+			}
+			<!-- <li class="grid gap-2 sm:grid-cols-[auto_1fr]">
 				<h3 class="text-lg font-semibold text-accent-2">
 					<span class="text-md text-slate-400">Senior Frontend Engineer</span>
-					<a href="https://neoble.in/" target="_blank" rel="noreferrer" class="flex gap-2">
-						Neoble <img src="/neoble.png" alt="indiagold" class="h-6 w-6" />
-					</a>
-				</h3>
-				<p class="text-sm text-textColor">
-					<span class="text-green-500">Aug 2019 - Feb 2022</span>
-				</p>
-			</li>
-			<li class="grid gap-2 sm:grid-cols-[auto_1fr]">
-				<h3 class="text-lg font-semibold text-accent-2">
-					<span class="text-md text-slate-400">Senior Frontend Engineer</span>
-					<a href="https://tekion.com/" target="_blank" rel="noreferrer" class="flex gap-2">
+					<a
+						href="https://tekion.com/"
+						target="_blank"
+						rel="noreferrer"
+						class="flex items-center gap-2"
+					>
 						Tekion Corp <img src="/tekion.png" alt="indiagold" class="h-6 w-6" />
 					</a>
 				</h3>
@@ -97,14 +133,19 @@ const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 			<li class="grid gap-2 sm:grid-cols-[auto_1fr]">
 				<h3 class="text-lg font-semibold text-accent-2">
 					<span class="text-md text-slate-400">Frontend Engineer</span>
-					<a href="https://indiagold.co/" target="_blank" rel="noreferrer" class="flex gap-2">
+					<a
+						href="https://indiagold.co/"
+						target="_blank"
+						rel="noreferrer"
+						class="flex items-center gap-2"
+					>
 						indiagold <img src="/indiagold.png" alt="indiagold" class="h-6 w-6" />
 					</a>
 				</h3>
-				<p class="text-sm text-textColor">
+				<p class="mt-[6px] text-sm text-textColor">
 					<span class="text-green-500">Aug 2019 - Feb 2022</span>
 				</p>
-			</li>
+			</li> -->
 		</ul>
 	</section>
 
