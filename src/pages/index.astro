@@ -36,9 +36,9 @@ import PageLayout from "@/layouts/Base.astro";
 			<br />
 			For last 5+ years of my professional career, I've mostly written code for the Frontend (both Mobile
 			and Web) at high growth product based startups (<span class="text-yellow-400">indiagold</span>
-			, <span class="text-blue-500">Neoble</span>, <span class="text-pink-500">Watchman AI</span>) and Forbes Cloud 100 Company (<span
-				class="text-emerald-300">Tekion Corp</span
-			>), with significant contributions to the backend, AI and everything in between.
+			, <span class="text-blue-500">Neoble</span>, <span class="text-pink-500">Watchman AI</span>)
+			and Forbes Cloud 100 Company (<span class="text-emerald-300">Tekion Corp</span>), with
+			significant contributions to the backend, AI and everything in between.
 			<br />
 			<br />
 			<span
@@ -78,16 +78,23 @@ import PageLayout from "@/layouts/Base.astro";
 			{
 				[
 					{
+						designation: "Senior Software Engineer",
+						company: "CreditMitra",
+						duration: "Oct 2025 - Apr 2026",
+						url: "https://creditmitra.in/",
+						icon: "/creditmitra.ico",
+					},
+					{
 						designation: "Founding Engineering Lead",
 						company: "Watchman AI",
-						duration: "Dec 2024 - Aug 2025",
+						duration: "Dec 2024 - Sep 2025",
 						url: "https://joinwatchman.com/",
 						icon: "/watchman.png",
 					},
 					{
 						designation: "Senior Frontend Engineer",
 						company: "Neoble",
-						duration: "Sep 2023 - Dec 2024",
+						duration: "Sep 2023 - Oct 2024",
 						url: "https://neoble.in/",
 						icon: "/neoble.png",
 					},
@@ -118,8 +125,8 @@ import PageLayout from "@/layouts/Base.astro";
 								{item.company} <img src={item.icon} alt="indiagold" class="h-6 w-6" />
 							</a>
 						</h3>
-						<p class="text-sm text-textColor">
-							<span class="text-green-500">{item.duration}</span>
+						<p class="ml-1 pt-1 text-sm text-textColor">
+							- [<span class="text-green-500">{item.duration}</span>]
 						</p>
 					</li>
 				))
