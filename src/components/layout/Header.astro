@@ -6,12 +6,21 @@ import { profile } from "@/data/profile";
 
 <header class="site-header" id="main-header">
 	<div class="identity">
-		<a class="avatar-link" href="/" aria-label="Sanjib Sah — home">
+		<a
+			class="avatar-link"
+			href="/"
+			aria-label="Sanjib Sah — home"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
 			<img src="/profile.png" alt="" width="48" height="48" fetchpriority="high" />
 		</a>
 		<div>
-			<a class="identity-name" href="/">Sanjib Sah</a>
-			<p class="identity-role">Founder at <a href={profile.studio}>FlipFlop Labs</a></p>
+			<a class="identity-name" href="/" target="_blank" rel="noopener noreferrer">Sanjib Sah</a>
+			<p class="identity-role">
+				Founder at <a href={profile.studio} target="_blank" rel="noopener noreferrer"
+					>FlipFlop Labs</a>
+			</p>
 		</div>
 	</div>
 	<div class="header-actions">

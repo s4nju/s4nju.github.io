@@ -1,5 +1,4 @@
 ---
-import { Icon } from "astro-icon/components";
 import { profile } from "@/data/profile";
 const links = [
 	{ label: "Contact", href: profile.contact },
@@ -13,9 +12,8 @@ const links = [
 	<nav aria-label="Social links">
 		{
 			links.map(({ label, href }) => (
-				<a href={href}>
+				<a href={href} target="_blank" rel="noopener noreferrer">
 					{label}
-					<Icon name="mdi:arrow-top-right" aria-hidden="true" />
 				</a>
 			))
 		}

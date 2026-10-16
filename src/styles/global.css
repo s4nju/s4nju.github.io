@@ -8,7 +8,7 @@
 		color-scheme: light;
 		/* https://tailwindcss.com/docs/customizing-colors#using-css-variables */
 		--theme-bg: 0deg 0% 98%;
-		--theme-link: 172deg 18% 41%;
+		--theme-link: 203deg 8% 27%;
 		--theme-text: 203deg 11% 15%;
 		--theme-accent: 351deg 66% 48%;
 		--theme-accent-2: 0deg 0% 7%;
@@ -20,7 +20,7 @@
 	:root[data-theme="dark"] {
 		color-scheme: dark;
 		--theme-bg: 210deg 6% 11%;
-		--theme-link: 330deg 66% 65%;
+		--theme-link: 220deg 4% 79%;
 		--theme-text: 220deg 3% 79%;
 		--theme-accent: 159deg 78% 51%;
 		--theme-accent-2: 0deg 0% 93%;
@@ -46,6 +46,7 @@
 	button {
 		transition:
 			color 160ms ease,
+			text-decoration-color 160ms ease,
 			border-color 160ms ease,
 			background-color 160ms ease;
 	}
@@ -101,11 +102,6 @@
 		color: var(--muted);
 		font-size: 14px;
 		line-height: 1.6;
-	}
-	.identity-role a {
-		color: hsl(var(--theme-link));
-		text-decoration: underline;
-		text-underline-offset: 4px;
 	}
 	.header-actions {
 		display: flex;
@@ -178,9 +174,11 @@
 	}
 	.intro a,
 	.section-content a,
-	.site-footer a {
+	.site-footer a,
+	.identity-role a {
 		color: hsl(var(--theme-link));
 		text-decoration: underline;
+		text-decoration-color: hsl(var(--theme-link) / 0.4);
 		text-underline-offset: 5px;
 		text-decoration-thickness: 1px;
 	}
@@ -189,17 +187,21 @@
 	.site-footer a {
 		display: inline;
 	}
-	.intro a svg,
-	.section-content a svg,
-	.site-footer a svg {
-		display: inline-block;
-		width: 1em;
-		height: 1em;
-		margin-left: 5px;
-		vertical-align: -0.1em;
+	.brand-icon {
+		display: block;
+		width: 18px;
+		height: 18px;
+		flex: 0 0 18px;
+		object-fit: contain;
+		border-radius: 3px;
 	}
-	.intro .contact-link {
-		color: hsl(var(--theme-accent));
+	.section-content a:has(> .brand-icon) {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+	}
+	[data-theme="dark"] .brand-icon[src="/favicons/biu.ico"] {
+		filter: brightness(0) invert(1);
 	}
 	.index-section {
 		display: grid;
@@ -256,17 +258,7 @@
 		background: hsl(var(--theme-accent) / 0.85);
 	}
 	.main-product::before {
-		top: 48px;
-	}
-	.eyebrow {
-		color: hsl(var(--theme-accent));
-		text-transform: uppercase;
-		font-size: 12px;
-		line-height: 1.6;
-		font-weight: 400;
-	}
-	.eyebrow.muted {
-		color: var(--muted);
+		top: 32px;
 	}
 	.main-product {
 		padding-top: 8px;
@@ -278,7 +270,7 @@
 		margin-top: 3px;
 		letter-spacing: -0.6px;
 	}
-	.main-product > p:not(.eyebrow) {
+	.main-product > p {
 		margin-top: 2px;
 		font-size: 15px;
 	}
@@ -293,7 +285,7 @@
 		gap: 14px;
 		margin-top: 5px;
 	}
-	.side-project-list h5 {
+	.side-project-list h4 {
 		font-size: 17px;
 		line-height: 1.65;
 		font-weight: 400;
@@ -351,15 +343,22 @@
 		gap: 24px;
 	}
 	.site-footer a {
-		text-decoration: none;
 		white-space: nowrap;
+	}
+	.intro a:focus-visible,
+	.section-content a:focus-visible,
+	.site-footer a:focus-visible,
+	.identity-role a:focus-visible {
+		color: hsl(var(--theme-accent));
+		text-decoration-color: currentColor;
 	}
 	@media (hover: hover) {
 		.intro a:hover,
 		.section-content a:hover,
 		.site-footer a:hover,
 		.identity-role a:hover {
-			color: hsl(var(--theme-accent-2));
+			color: hsl(var(--theme-accent));
+			text-decoration-color: currentColor;
 		}
 		.resume-link:hover,
 		.theme-button:hover {
@@ -482,12 +481,12 @@
 			width: 16px;
 		}
 		.main-product::before {
-			top: 48px;
+			top: 32px;
 		}
-		.side-project-list h5 {
+		.side-project-list h4 {
 			font-size: 15px;
 		}
-		.main-product > p:not(.eyebrow),
+		.main-product > p,
 		.side-project-list p,
 		.studio-description {
 			font-size: 13px;

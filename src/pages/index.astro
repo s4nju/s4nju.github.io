@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
+import BrandIcon from "@/components/BrandIcon.astro";
 import AsciiScene from "@/components/AsciiScene.astro";
 import { experience, profile, sideProjects } from "@/data/profile";
 import PageLayout from "@/layouts/Base.astro";
@@ -12,10 +12,10 @@ import PageLayout from "@/layouts/Base.astro";
 			<h1 id="intro-title">Founder. Builder.<br /><span>Still curious.</span></h1>
 			<p>I build thoughtful apps and the systems behind them at FlipFlop Labs.</p>
 			<div class="intro-links">
-				<a class="contact-link" href={profile.contact}
-					>Contact<Icon name="mdi:arrow-top-right" aria-hidden="true" /></a
+				<a class="contact-link" href={profile.contact} target="_blank" rel="noopener noreferrer"
+					>Contact</a
 				>
-				<a href={profile.github}>GitHub<Icon name="mdi:arrow-top-right" aria-hidden="true" /></a>
+				<a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
 			</div>
 		</section>
 
@@ -23,34 +23,32 @@ import PageLayout from "@/layouts/Base.astro";
 			<h2 id="now-title" class="section-label">Now</h2>
 			<div class="section-content">
 				<h3 class="studio-title">
-					<a href={profile.studio}
-						>FlipFlop Labs<Icon name="mdi:arrow-top-right" aria-hidden="true" /></a
+					<a href={profile.studio} target="_blank" rel="noopener noreferrer"
+						><BrandIcon src="/favicons/flipflop.svg" />FlipFlop Labs</a
 					>
 				</h3>
 				<p class="muted studio-description">My app studio. Thoughtful software.</p>
 				<div class="studio-family">
 					<div class="main-product family-branch">
-						<p class="eyebrow">Main product</p>
 						<h4>
-							<a href="https://getbiu.app/"
-								>biu<Icon name="mdi:arrow-top-right" aria-hidden="true" /></a
+							<a href="https://getbiu.app/" target="_blank" rel="noopener noreferrer"
+								><BrandIcon src="/favicons/biu.ico" />biu</a
 							>
 						</h4>
 						<p>Turn what you learn into lasting knowledge.</p>
 						<p class="muted product-detail">AI flashcards &amp; spaced repetition.</p>
 					</div>
 					<div class="side-projects">
-						<h4 class="eyebrow muted">Side projects</h4>
 						<ul class="side-project-list" role="list">
 							{
 								sideProjects.map((project) => (
 									<li class="family-branch">
-										<h5>
-											<a href={project.url}>
+										<h4>
+											<a href={project.url} target="_blank" rel="noopener noreferrer">
+												<BrandIcon src={project.icon} />
 												{project.name}
-												<Icon name="mdi:arrow-top-right" aria-hidden="true" />
 											</a>
-										</h5>
+										</h4>
 										<p class="muted">{project.description}</p>
 									</li>
 								))
@@ -71,9 +69,9 @@ import PageLayout from "@/layouts/Base.astro";
 						<li class="experience-row">
 							<div>
 								<h3>
-									<a href={job.url}>
+									<a href={job.url} target="_blank" rel="noopener noreferrer">
+										<BrandIcon src={job.icon} />
 										{job.company}
-										<Icon name="mdi:arrow-top-right" aria-hidden="true" />
 									</a>
 								</h3>
 								<p class="muted">{job.role}</p>
@@ -91,8 +89,8 @@ import PageLayout from "@/layouts/Base.astro";
 			<h2 id="projects-title" class="section-label">Past<br class="desktop-break" /> projects</h2>
 			<div class="past-project section-content">
 				<h3>
-					<a href="https://phraze-web.vercel.app/"
-						>Phraze<Icon name="mdi:arrow-top-right" aria-hidden="true" /></a
+					<a href="https://phraze-web.vercel.app/" target="_blank" rel="noopener noreferrer"
+						><BrandIcon src="/favicons/phraze.webp" />Phraze</a
 					>
 				</h3>
 				<p class="muted">A collaborative publishing platform.</p>

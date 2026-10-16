@@ -254,11 +254,13 @@ const landscape = createLandscape();
 			const secondsNow = () =>
 				(elapsed + (animation === undefined ? 0 : performance.now() - started)) / 1000;
 			const paint = (seconds: number) => {
+				// Keep the dinosaur's footsteps and the passing terrain in sync at 1.5× speed.
+				const sceneSeconds = seconds * 1.5;
 				for (const { element, speed } of layers) {
 					if (element)
-						element.style.transform = `translate3d(${sceneryOffset(seconds, speed, tileWidth)}px, 0, 0)`;
+						element.style.transform = `translate3d(${sceneryOffset(sceneSeconds, speed, tileWidth)}px, 0, 0)`;
 				}
-				const nextDinosaur = renderDinosaur(seconds);
+				const nextDinosaur = renderDinosaur(sceneSeconds);
 				if (nextDinosaur !== lastDinosaur) {
 					dinosaur.textContent = nextDinosaur;
 					lastDinosaur = nextDinosaur;
