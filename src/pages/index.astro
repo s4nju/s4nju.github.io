@@ -1,224 +1,102 @@
 ---
-// import {
-// type CollectionEntry,
-// 	getCollection,
-// } from "astro:content";
-import SocialList from "@/components/SocialList.astro";
-// import { getAllPosts } from "@/data/post";
+import { Icon } from "astro-icon/components";
+import AsciiScene from "@/components/AsciiScene.astro";
+import { experience, profile, sideProjects } from "@/data/profile";
 import PageLayout from "@/layouts/Base.astro";
-// import { collectionDateSort } from "@/utils/date";
-// import PostPreview from "@/components/blog/PostPreview.astro";
-
-// Posts
-// const MAX_POSTS = 10;
-// const allPosts = await getAllPosts();
-// const allPostsByDate = allPosts
-// 	.sort(collectionDateSort)
-// 	.slice(0, MAX_POSTS) as CollectionEntry<"post">[];
-
-// Notes
-// const MAX_NOTES = 5;
-// const allNotes = await getCollection("note");
-// const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 ---
 
 <PageLayout meta={{ title: "Home" }}>
-	<section>
-		<h1 class="title mb-6">👋 Hey!</h1>
-		<p class="mb-4">
-			I am a Product Engineer, who love to
-			<span class="bg-orange-900 px-2 py-1 font-mono text-orange-500">🚀 Write Code</span>, 🔬 <span
-				class="italic text-green-500 underline">Tinker Design</span
-			>, <span class="text-blue-500">📜 Brainstorm Product</span> and <span class="text-yellow-300"
-				>🏗️ Build Stuff</span
-			>.
-			<br />
-			<br />
-			For last 5+ years of my professional career, I've mostly written code for the Frontend (both Mobile
-			and Web) at high growth product based startups (<span class="text-yellow-400">indiagold</span>
-			, <span class="text-blue-500">Neoble</span>, <span class="text-pink-500">Watchman AI</span>)
-			and Forbes Cloud 100 Company (<span class="text-emerald-300">Tekion Corp</span>), with
-			significant contributions to the backend, AI and everything in between.
-			<br />
-			<br />
-			<span
-				class="focus:ring-offset-2 focus:ring-offset-slate-50 inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 max-md:h-20"
-				>Currently, I'm looking for challenging opportunities! 🔎</span
-			>
-			<br />
-			<br />
-			My tech stack includes <span class="text-green-500">React</span>, <span class="text-blue-500"
-				>Next.js</span
-			>,
-			<span class="text-slate-400">Redux</span>
-			<span class="text-lime-300">redux-saga</span>
-			<span class="text-yellow-400">TypeScript</span>, <span class="text-orange-500"
-				>TailwindCSS</span
-			>,
-			<span class="text-rose-400">React Native</span>
-			<span class="text-teal-600">Expo</span>,
-			<span class="text-red-500">Nativewind</span>, <span class="text-purple-500">Reanimated</span>,
-			<span class="text-sky-500">Skia</span>,<span class="text-sky-500">React Navigation</span>,
-			<span class="text-pink-500">Hermes</span>,
-			<span class="text-emerald-300">react-query</span>, <span class="text-yellow-400">Tamagui</span
-			>,
-			<span class="text-red-500">Node.js</span>, <span class="text-purple-500">Express</span>,
-			<span class="text-pink-500">MongoDB</span>, <span class="text-sky-500">GraphQL</span>,
-			<span class="text-emerald-300">Apollo</span>,
-			<span class="text-blue-500">NextAuth</span>, <span class="text-green-500">Vercel</span>,
-			<span class="text-purple-500">Sentry</span>, <span class="text-sky-500">Playwright</span>,
-			<span class="text-pink-500">Jest</span>, <span class="text-sky-500">Cypress</span>,
-			<span class="text-emerald-300">Storybook</span> etc. 🫷
-		</p>
-		<SocialList />
-	</section>
-	<section aria-label="Blog post list" class="mt-16">
-		<h2 class="title mb-2 text-xl text-accent">Work Experience</h2>
-		<ul class="space-y-6" role="list">
-			{
-				[
-					{
-						designation: "Senior Software Engineer",
-						company: "CreditMitra",
-						duration: "Oct 2025 - Apr 2026",
-						url: "https://creditmitra.in/",
-						icon: "/creditmitra.ico",
-					},
-					{
-						designation: "Founding Engineering Lead",
-						company: "Watchman AI",
-						duration: "Dec 2024 - Sep 2025",
-						url: "https://joinwatchman.com/",
-						icon: "/watchman.png",
-					},
-					{
-						designation: "Senior Frontend Engineer",
-						company: "Neoble",
-						duration: "Sep 2023 - Oct 2024",
-						url: "https://neoble.in/",
-						icon: "/neoble.png",
-					},
-					{
-						designation: "Senior Frontend Engineer",
-						company: "Tekion Corp",
-						duration: "Mar 2022 - Aug 2023",
-						url: "https://tekion.com/",
-						icon: "/tekion.png",
-					},
-					{
-						designation: "Frontend Engineer",
-						company: "indiagold",
-						duration: "Aug 2020 - Feb 2022",
-						url: "https://indiagold.co/",
-						icon: "/indiagold.png",
-					},
-				].map((item) => (
-					<li class="grid gap-2 sm:grid-cols-[auto_1fr]">
-						<h3 class="text-lg font-semibold text-accent-2">
-							<span class="text-md text-slate-400">{item.designation}</span>
-							<a
-								href="https://neoble.in/"
-								target="_blank"
-								rel="noreferrer"
-								class="flex items-center gap-2"
-							>
-								{item.company} <img src={item.icon} alt="indiagold" class="h-6 w-6" />
-							</a>
-						</h3>
-						<p class="ml-1 pt-1 text-sm text-textColor">
-							- [<span class="text-green-500">{item.duration}</span>]
-						</p>
-					</li>
-				))
-			}
-			<!-- <li class="grid gap-2 sm:grid-cols-[auto_1fr]">
-				<h3 class="text-lg font-semibold text-accent-2">
-					<span class="text-md text-slate-400">Senior Frontend Engineer</span>
-					<a
-						href="https://tekion.com/"
-						target="_blank"
-						rel="noreferrer"
-						class="flex items-center gap-2"
-					>
-						Tekion Corp <img src="/tekion.png" alt="indiagold" class="h-6 w-6" />
-					</a>
-				</h3>
-				<p class="text-sm text-textColor">
-					<span class="text-green-500">Mar 2022 - Aug 2023</span>
-				</p>
-			</li>
-			<li class="grid gap-2 sm:grid-cols-[auto_1fr]">
-				<h3 class="text-lg font-semibold text-accent-2">
-					<span class="text-md text-slate-400">Frontend Engineer</span>
-					<a
-						href="https://indiagold.co/"
-						target="_blank"
-						rel="noreferrer"
-						class="flex items-center gap-2"
-					>
-						indiagold <img src="/indiagold.png" alt="indiagold" class="h-6 w-6" />
-					</a>
-				</h3>
-				<p class="mt-[6px] text-sm text-textColor">
-					<span class="text-green-500">Aug 2019 - Feb 2022</span>
-				</p>
-			</li> -->
-		</ul>
-	</section>
+	<div class="home-page">
+		<AsciiScene />
+		<section class="intro" aria-labelledby="intro-title">
+			<h1 id="intro-title">Founder. Builder.<br /><span>Still curious.</span></h1>
+			<p>I build thoughtful apps and the systems behind them at FlipFlop Labs.</p>
+			<div class="intro-links">
+				<a class="contact-link" href={profile.contact}
+					>Contact<Icon name="mdi:arrow-top-right" aria-hidden="true" /></a
+				>
+				<a href={profile.github}>GitHub<Icon name="mdi:arrow-top-right" aria-hidden="true" /></a>
+			</div>
+		</section>
 
-	<section
-		aria-label="Blog post list"
-		class="mt-8 rounded-sm border border-dashed border-gray-500 p-4"
-	>
-		<h2 class="title mb-2 text-xl text-accent">Personal Projects</h2>
-		<ul class="space-y-6" role="list">
-			<li class="grid gap-2 sm:grid-cols-[auto_1fr]">
-				<h3 class="text-lg font-semibold text-accent-2">
-					<span class="text-md text-slate-400">Creator</span>
-					<a
-						href="https://phraze-web.vercel.app/"
-						target="_blank"
-						rel="noreferrer"
-						class="flex items-center gap-2 underline"
+		<section class="index-section studio-section" aria-labelledby="now-title">
+			<h2 id="now-title" class="section-label">Now</h2>
+			<div class="section-content">
+				<h3 class="studio-title">
+					<a href={profile.studio}
+						>FlipFlop Labs<Icon name="mdi:arrow-top-right" aria-hidden="true" /></a
 					>
-						Phraze <img src="/phraze_logo.webp" alt="indiagold" class="h-6 w-6" />
-					</a>
 				</h3>
-				<p class="text-sm text-textColor">
-					<span class="text-white-500">
-						Phraze is a Notion like block-based blogging platform, which support real-time
-						multiplayer collaboration.
-					</span>
-				</p>
-			</li>
-		</ul>
-	</section>
-	<!-- <section aria-label="Blog post list" class="mt-16">
-		<h2 class="title mb-6 text-xl text-accent"><a href="/posts/">Posts</a></h2>
-		<ul class="space-y-4" role="list">
-			{
-				allPostsByDate.map((p) => (
-					<li class="grid gap-2 sm:grid-cols-[auto_1fr]">
-						<PostPreview post={p} />
-					</li>
-				))
-			}
-		</ul>
-	</section> -->
-	<!-- {
-		latestNotes.length > 0 && (
-			<section class="mt-16">
-				<h2 class="title mb-6 text-xl text-accent">
-					<a href="/notes/">Notes</a>
-				</h2>
-				<ul class="space-y-4" role="list">
-					{latestNotes.map((note) => (
-						<li>
-							<Note note={note} as="h3" isPreview />
+				<p class="muted studio-description">My app studio. Thoughtful software.</p>
+				<div class="studio-family">
+					<div class="main-product family-branch">
+						<p class="eyebrow">Main product</p>
+						<h4>
+							<a href="https://getbiu.app/"
+								>biu<Icon name="mdi:arrow-top-right" aria-hidden="true" /></a
+							>
+						</h4>
+						<p>Turn what you learn into lasting knowledge.</p>
+						<p class="muted product-detail">AI flashcards &amp; spaced repetition.</p>
+					</div>
+					<div class="side-projects">
+						<h4 class="eyebrow muted">Side projects</h4>
+						<ul class="side-project-list" role="list">
+							{
+								sideProjects.map((project) => (
+									<li class="family-branch">
+										<h5>
+											<a href={project.url}>
+												{project.name}
+												<Icon name="mdi:arrow-top-right" aria-hidden="true" />
+											</a>
+										</h5>
+										<p class="muted">{project.description}</p>
+									</li>
+								))
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="index-section experience-section" aria-labelledby="experience-title">
+			<h2 id="experience-title" class="section-label">
+				Past<br class="desktop-break" /> experience
+			</h2>
+			<ol class="experience-list section-content" role="list">
+				{
+					experience.map((job) => (
+						<li class="experience-row">
+							<div>
+								<h3>
+									<a href={job.url}>
+										{job.company}
+										<Icon name="mdi:arrow-top-right" aria-hidden="true" />
+									</a>
+								</h3>
+								<p class="muted">{job.role}</p>
+							</div>
+							<p class="experience-dates">
+								{job.start} <span aria-label="to">–</span> {job.end}
+							</p>
 						</li>
-					))}
-				</ul>
-			</section>
-		)
-	} -->
+					))
+				}
+			</ol>
+		</section>
+
+		<section class="index-section past-projects-section" aria-labelledby="projects-title">
+			<h2 id="projects-title" class="section-label">Past<br class="desktop-break" /> projects</h2>
+			<div class="past-project section-content">
+				<h3>
+					<a href="https://phraze-web.vercel.app/"
+						>Phraze<Icon name="mdi:arrow-top-right" aria-hidden="true" /></a
+					>
+				</h3>
+				<p class="muted">A collaborative publishing platform.</p>
+			</div>
+		</section>
+	</div>
 </PageLayout>

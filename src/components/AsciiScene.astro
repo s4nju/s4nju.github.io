@@ -1,0 +1,329 @@
+---
+import { Icon } from "astro-icon/components";
+import { createLandscape, DINO_SCALE, renderDinosaur, renderSky } from "@/utils/asciiScene";
+const landscape = createLandscape();
+---
+
+<ascii-scene class="ascii-scene" style={`--dino-scale: ${DINO_SCALE}`}>
+	<div
+		class="scene-art"
+		role="img"
+		aria-label="A small ASCII dinosaur walking through layered hills, pine trees and a starry sky."
+	>
+		<pre class="scene-sky" data-layer="sky" aria-hidden="true">{renderSky(140, "steady")}</pre>
+		<pre
+			class="scene-sky star-twinkle"
+			data-layer="stars-a"
+			aria-hidden="true">{renderSky(140, "a")}</pre>
+		<pre
+			class="scene-sky star-twinkle star-twinkle-later"
+			data-layer="stars-b"
+			aria-hidden="true">{renderSky(140, "b")}</pre>
+		<span class="scene-moon" aria-hidden="true">( )</span>
+		<pre
+			class="scene-background moving-layer"
+			data-layer="background"
+			aria-hidden="true">{landscape.background}</pre>
+		<pre
+			class="scene-foreground moving-layer"
+			data-layer="foreground"
+			aria-hidden="true">{landscape.foreground}</pre>
+		<pre
+			class="scene-ground moving-layer"
+			data-layer="ground"
+			aria-hidden="true">{landscape.ground}</pre>
+		<pre class="scene-dinosaur" data-layer="dinosaur" aria-hidden="true">{renderDinosaur(0)}</pre>
+	</div>
+	<button
+		class="scene-pause"
+		type="button"
+		aria-label="Pause scenery animation"
+		aria-pressed="false"
+	>
+		<Icon class="pause-icon" name="mdi:pause" aria-hidden="true" />
+		<Icon class="play-icon" name="mdi:play" aria-hidden="true" />
+	</button>
+</ascii-scene>
+
+<style>
+	.ascii-scene {
+		--scene-font: 8.5px;
+		--scene-line: 6.4px;
+		display: block;
+		position: relative;
+		margin-left: -32px;
+		height: 128px;
+		font-size: var(--scene-font);
+		line-height: var(--scene-line);
+	}
+	.scene-art {
+		position: relative;
+		height: 100%;
+		overflow: hidden;
+	}
+	pre {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: max-content;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font: inherit;
+		letter-spacing: 0;
+		white-space: pre;
+		user-select: none;
+		pointer-events: none;
+	}
+	.moving-layer {
+		will-change: transform;
+	}
+	.scene-sky {
+		color: hsl(var(--theme-accent-2));
+		opacity: 0.8;
+	}
+	.star-twinkle {
+		animation: star-breathe 9s ease-in-out infinite paused;
+	}
+	.star-twinkle-later {
+		animation-duration: 12s;
+		animation-delay: -4s;
+	}
+	[data-motion="running"] .star-twinkle {
+		animation-play-state: running;
+	}
+	@keyframes star-breathe {
+		0%,
+		100% {
+			opacity: 0.8;
+		}
+		45%,
+		55% {
+			opacity: 0.15;
+		}
+	}
+	.scene-moon {
+		position: absolute;
+		top: 14px;
+		left: 81%;
+		font-size: 10px;
+		line-height: 10px;
+		color: hsl(var(--theme-accent));
+		opacity: 0.8;
+	}
+	.scene-background {
+		color: hsl(var(--theme-accent-2));
+		font-weight: 700;
+		opacity: 0.8;
+	}
+	.scene-foreground {
+		color: hsl(var(--theme-accent));
+		font-weight: 700;
+		opacity: 0.95;
+	}
+	.scene-ground {
+		color: hsl(var(--theme-accent));
+		font-weight: 700;
+	}
+	.scene-foreground,
+	.scene-ground {
+		-webkit-text-stroke: 0.2px currentColor;
+	}
+	.scene-dinosaur {
+		left: 50%;
+		top: auto;
+		bottom: calc(var(--scene-line) * 1.25);
+		transform: translateX(-50%);
+		font-size: calc(var(--scene-font) * var(--dino-scale));
+		line-height: calc(var(--scene-line) * var(--dino-scale));
+		font-weight: 600;
+		color: hsl(var(--theme-accent));
+		text-shadow:
+			1px 0 hsl(var(--theme-bg)),
+			-1px 0 hsl(var(--theme-bg)),
+			0 1px hsl(var(--theme-bg)),
+			0 -1px hsl(var(--theme-bg));
+	}
+	.scene-pause {
+		position: absolute;
+		right: 0;
+		top: -15px;
+		display: grid;
+		place-items: center;
+		width: 32px;
+		height: 32px;
+		color: var(--muted);
+		opacity: 0;
+		transition:
+			opacity 160ms ease,
+			color 160ms ease;
+	}
+	.scene-pause svg {
+		grid-area: 1 / 1;
+		width: 15px;
+		height: 15px;
+	}
+	.play-icon {
+		display: none;
+	}
+	.scene-pause[aria-pressed="true"] .pause-icon {
+		display: none;
+	}
+	.scene-pause[aria-pressed="true"] .play-icon {
+		display: block;
+	}
+	.ascii-scene:hover .scene-pause,
+	.scene-pause:focus-visible {
+		opacity: 1;
+	}
+	.scene-pause:hover {
+		color: hsl(var(--theme-accent));
+	}
+	@media (max-width: 760px) {
+		.ascii-scene {
+			margin-left: 0;
+		}
+	}
+	@media (max-width: 540px) {
+		.ascii-scene {
+			--scene-font: 8px;
+			--scene-line: 6px;
+			height: 120px;
+		}
+	}
+	@media (hover: none) {
+		.scene-pause {
+			opacity: 0.7;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.star-twinkle {
+			animation: none;
+			opacity: 0.65;
+		}
+		.scene-pause {
+			display: none;
+		}
+		.moving-layer {
+			will-change: auto;
+		}
+	}
+</style>
+
+<script>
+	import {
+		renderDinosaur,
+		renderSky,
+		sceneryOffset,
+		SCENERY_SPEEDS,
+		TILE_COLUMNS,
+	} from "@/utils/asciiScene";
+
+	class AsciiScene extends HTMLElement {
+		private cleanup?: () => void;
+		private setupFrame?: number;
+
+		connectedCallback() {
+			// Wait for children on reconnects, including Astro's development hot reload.
+			this.setupFrame = requestAnimationFrame(() => this.initialize());
+		}
+
+		private initialize() {
+			const skies = [
+				{ element: this.querySelector<HTMLElement>('[data-layer="sky"]'), group: "steady" },
+				{ element: this.querySelector<HTMLElement>('[data-layer="stars-a"]'), group: "a" },
+				{ element: this.querySelector<HTMLElement>('[data-layer="stars-b"]'), group: "b" },
+			] as const;
+			const dinosaur = this.querySelector<HTMLElement>('[data-layer="dinosaur"]');
+			const button = this.querySelector<HTMLButtonElement>("button");
+			const layers = Object.entries(SCENERY_SPEEDS).map(([name, speed]) => ({
+				element: this.querySelector<HTMLElement>(`[data-layer="${name}"]`),
+				speed,
+			}));
+			if (!this.isConnected || !skies[0].element || !dinosaur || !button) return;
+
+			const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+			const events = new AbortController();
+			let tileWidth = TILE_COLUMNS * 5.1;
+			let paused = false;
+			let visible = true;
+			let animation: number | undefined;
+			let elapsed = 0;
+			let started = 0;
+			let lastDinosaur = "";
+			const secondsNow = () =>
+				(elapsed + (animation === undefined ? 0 : performance.now() - started)) / 1000;
+			const paint = (seconds: number) => {
+				for (const { element, speed } of layers) {
+					if (element)
+						element.style.transform = `translate3d(${sceneryOffset(seconds, speed, tileWidth)}px, 0, 0)`;
+				}
+				const nextDinosaur = renderDinosaur(seconds);
+				if (nextDinosaur !== lastDinosaur) {
+					dinosaur.textContent = nextDinosaur;
+					lastDinosaur = nextDinosaur;
+				}
+			};
+			const frame = (now: number) => {
+				paint((elapsed + now - started) / 1000);
+				animation = requestAnimationFrame(frame);
+			};
+			const sync = () => {
+				const running = !paused && !motion.matches && visible && !document.hidden;
+				this.dataset.motion = running ? "running" : "paused";
+				if (running && animation === undefined) {
+					started = performance.now();
+					animation = requestAnimationFrame(frame);
+				} else if (!running && animation !== undefined) {
+					elapsed += performance.now() - started;
+					cancelAnimationFrame(animation);
+					animation = undefined;
+				}
+			};
+			const resize = new ResizeObserver(() => {
+				// A single glyph's box rounds differently from a full line of text.
+				// Measure all three copies together so the repeat is pixel-exact.
+				const fullWidth = layers[0]?.element?.getBoundingClientRect().width ?? 0;
+				if (fullWidth <= 0) return;
+				tileWidth = fullWidth / 3;
+				const characterWidth = tileWidth / TILE_COLUMNS;
+				for (const { element, group } of skies) {
+					if (element)
+						element.textContent = renderSky(Math.floor(this.clientWidth / characterWidth), group);
+				}
+				paint(secondsNow());
+			});
+			resize.observe(this);
+			const intersection = new IntersectionObserver(([entry]) => {
+				visible = entry?.isIntersecting ?? false;
+				sync();
+			});
+			intersection.observe(this);
+			button.addEventListener(
+				"click",
+				() => {
+					paused = !paused;
+					button.setAttribute("aria-pressed", String(paused));
+					button.setAttribute("aria-label", `${paused ? "Play" : "Pause"} scenery animation`);
+					sync();
+				},
+				{ signal: events.signal },
+			);
+			motion.addEventListener("change", sync, { signal: events.signal });
+			document.addEventListener("visibilitychange", sync, { signal: events.signal });
+			paint(0);
+			sync();
+			this.cleanup = () => {
+				events.abort();
+				resize.disconnect();
+				intersection.disconnect();
+				if (animation !== undefined) cancelAnimationFrame(animation);
+			};
+		}
+		disconnectedCallback() {
+			if (this.setupFrame !== undefined) cancelAnimationFrame(this.setupFrame);
+			this.cleanup?.();
+		}
+	}
+	if (!customElements.get("ascii-scene")) customElements.define("ascii-scene", AsciiScene);
+</script>
